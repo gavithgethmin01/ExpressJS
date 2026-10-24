@@ -17,7 +17,6 @@ app.get("/api/users", (request, response) => {
   ]);
 });
 
-// මෙතැන app.get සහ "/api/products" ලෙස නිවැරදි කර ඇත
 app.get("/api/products", (request, response) => {
   response.send([{ id: 123, name: "chicken breast", price: 12.99 }]);
 });
