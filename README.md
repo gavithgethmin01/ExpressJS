@@ -1,6 +1,6 @@
 # ExpressJS
 
-A practical learning repository for building backend applications with Express.js. This project includes simple Express examples, API routes, middleware usage, and a React + Vite frontend integration.
+A practical learning repository for building backend applications with Express.js. This project includes simple Express examples, API routes, middleware usage, and a React + Vite frontend integration for frontend-backend communication.
 
 ## Overview
 
@@ -32,6 +32,9 @@ ExpressJS/
     ├── server.js
     ├── vite.config.js
     ├── src/
+    │   ├── App.jsx
+    │   ├── main.jsx
+    │   └── index.css
     └── README.md
 ```
 
@@ -53,13 +56,14 @@ The `With-React` folder demonstrates how to integrate Express with a React front
 - Middleware with `express.json()`
 - API endpoint creation
 - Frontend + backend integration
+- Fetching API data from a React frontend
 
 ## Prerequisites
 
 Before running the examples, make sure you have:
 
 - Node.js installed
-- npm or Yarn installed
+- npm installed
 
 ## Getting Started
 
@@ -113,6 +117,23 @@ The examples include endpoints such as:
 - `/api/products`
 
 These routes demonstrate how Express handles requests and returns JSON data.
+
+## React + Express Example Details
+
+The `With-React` app includes:
+
+- an Express API running on `http://localhost:3000`
+- a React frontend running on the Vite dev server
+- a fetch call from the React app to `/api/users`
+- JSON data displayed in the browser UI
+
+Example frontend fetch:
+
+```js
+fetch("http://localhost:3000/api/users")
+  .then((response) => response.json())
+  .then((data) => console.log(data));
+```
 
 ## Tech Stack
 
