@@ -7,8 +7,10 @@ const App = () => {
     fetch("http://localhost:3000/api/users")
       .then((response) => response.json())
       .then((data) => {
-        if (Array.isArray(data)) {
-          setBackendData(`Connected: ${data.length} users loaded`);
+        const users = Array.isArray(data) ? data : data.users || [];
+
+        if (users.length > 0) {
+          setBackendData(`Connected: ${users.length} users loaded`);
         } else {
           setBackendData(data.message || "Connected");
         }
