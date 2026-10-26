@@ -2,7 +2,7 @@ import express from "express";
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const port = process.env.port || 3000;
 
 app.get("/", (request, response) => {
   response.status(200).send({ msg: "hellow" });
@@ -10,10 +10,10 @@ app.get("/", (request, response) => {
 
 app.get("/api/users", (request, response) => {
   response.send([
-    { id: 1, username: "ason", displayName: "Ason" },
-    { id: 2, username: "kuvidi", displayName: "Kuvidi" },
-    { id: 3, username: "isuru", displayName: "isuru" },
-    { id: 4, username: "gethmin", displayName: "Gethmin" },
+    { id: 1, username: "Ason", displayname: "Ason" },
+    { id: 2, username: "Kuvidi", displayname: "Kuvidi" },
+    { id: 3, username: "Isuru", displayname: "Isuru" },
+    { id: 4, username: "Gethmin", displayname: "Gethmin" },
   ]);
 });
 
@@ -21,6 +21,6 @@ app.get("/api/products", (request, response) => {
   response.send([{ id: 123, name: "chicken breast", price: 12.99 }]);
 });
 
-app.listen(PORT, () => {
-  console.log(`Running on Port ${PORT}`);
+app.listen(port, () => {
+  console.log(`running on port ${port}`);
 });
