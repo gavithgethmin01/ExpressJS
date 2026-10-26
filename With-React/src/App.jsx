@@ -1,24 +1,32 @@
-import { useState, useEffect } from "reat";
+import { useState, useEffect } from "react";
 
 const App = () => {
-  const [backendData, setBackendData] = useState("");
+  const [backendData, setBackendData] = useState("Loading...");
 
   useEffect(() => {
-    //Fetch from the Express local server port
     fetch("http://localhost:3000/api/users")
       .then((response) => response.json())
-      .then((data) => setBackendData(data.message))
-      .catch((error) => console.error("Error fetching data:", error));
+      .then((data) => {
+        if (Array.isArray(data)) {
+          setBackendData(`Connected: ${data.length} users loaded`);
+        } else {
+          setBackendData(data.message || "Connected");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setBackendData("Connection failed");
+      });
   }, []);
-};
 
-return (
-  <div className="origin-center mt-[50px]">
-    <h1>React + Express Integration</h1>
-    <p>
-      Backend Status: <strong>{backendData || "Loading.."}</strong>
-    </p>
-  </div>
-);
+  return (
+    <div className="origin-center mt-[50px]">
+      <h1>React + Express Integration</h1>
+      <p>
+        Backend Status: <strong>{backendData}</strong>
+      </p>
+    </div>
+  );
+};
 
 export default App;
